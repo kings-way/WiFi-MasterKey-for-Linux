@@ -1,5 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# Author:
+#   <md5_salt [AT] qq.com> 
+#        https://github.com/5alt/lianwifi
+#   <root@kings-way.info> 
+#       https://github.com/kings-way/WiFi-MasterKey-in-Linux
+
 
 import md5
 from Crypto.Cipher import AES
@@ -232,9 +238,24 @@ class wifi:
                     print wifi['msg']
 
 if __name__ == '__main__':
-#    results=commands.getoutput('iwlist wlan0 scan | grep -E "Address|ESSID"| cut -c 21-')
-    BSSID=re.compile(r"([0-9A-F]{2}:){5}[0-9A-F]{2}")
-    print BSSID.findall("Address: 9C:21:6A:D5:6D:F2")
+    scan=commands.getoutput('iwlist wlan0 scan | grep -E "Address|ESSID"| cut -c 21-')
+
+#    BSSID=re.findall('(([0-9A-F]{2}:){5}[0-9A-F]{2})',scan)
+#   No idea about why this regular expression doesn't work
+    BSSID=re.findall('[0-9A-F]{2}:[0-9A-F]{2}:[0-9A-F]{2}:[0-9A-F]{2}:[0-9A-F]{2}:[0-9A-F]{2}',scan)
+    ESSID=re.findall('(?<=").*(?=")',scan)
+
     
-#   print results
-    print BSSID
+    print "====================="
+    print "  ",len(BSSID),"APs detected..."
+    print "====================="
+    i=0
+    while(i<len(BSSID)):
+        print i,"\t",BSSID[i],"\t",ESSID[i]
+        i=i+1
+    
+    print "\n"
+    print "====================="
+    print " Passwords cracked..."
+    print "====================="
+    wifi().query(ESSID,BSSID)

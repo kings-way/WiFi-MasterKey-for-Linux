@@ -1,4 +1,0 @@
-开三个窗口到当前目录,分别执行
-redis-server
-celery worker -A task.celery --loglevel=info
-python app.py

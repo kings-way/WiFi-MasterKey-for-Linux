@@ -15,6 +15,7 @@ import re
 import commands
 import time
 import sys
+import os
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -238,7 +239,16 @@ class wifi:
                     print wifi['msg']
 
 if __name__ == '__main__':
-    scan=commands.getoutput('iwlist wlan0 scan | grep -E "Address|ESSID"| cut -c 21-')
+
+#   First, We have to judge whether it is a PC or Nokia N9 phone, a smartphone which runs Meego OS.
+#   When on Meego, iwlist sometimes returns 2 ESSID of an AP, 
+#   and the second ESSID looks like "\x95\x0D\x04\x00\x00......". So we have to cope with that additionally
+    os_flag=commands.getoutput("cat /etc/issue").find("MeeGo")
+    if(os_flag!=-1):
+        os.system("develsh -c 'ifconfig wlan0 up'")
+        scan=commands.getoutput('/sbin/iwlist wlan0 scan | grep "Addr" -A 5 | grep -E "Address|ESSID"| cut -c 21-')
+    else:
+        scan=commands.getoutput('iwlist wlan0 scan | grep -E "Address|ESSID"| cut -c 21-')
 
 #    BSSID=re.findall('(([0-9A-F]{2}:){5}[0-9A-F]{2})',scan)
 #   No idea about why this regular expression doesn't work

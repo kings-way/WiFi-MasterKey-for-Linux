@@ -246,22 +246,22 @@ if __name__ == '__main__':
     os_flag=commands.getoutput("cat /etc/issue").find("MeeGo")
     if(os_flag!=-1):
         os.system("develsh -c 'ifconfig wlan0 up'")
-        scan=commands.getoutput('/sbin/iwlist wlan0 scan | grep "Addr" -A 5 | grep -E "Address|ESSID"| cut -c 21-')
+        scan=commands.getoutput('/sbin/iwlist wlan0 scan | grep "Addr" -A 5 | grep -E "Addr|ESSID|level"| cut -c 21-')
     else:
-        scan=commands.getoutput('iwlist wlan0 scan | grep -E "Address|ESSID"| cut -c 21-')
+        scan=commands.getoutput('iwlist wlan0 scan | grep -E "Addr|ESSID|level"| cut -c 21-')
 
 #    BSSID=re.findall('(([0-9A-F]{2}:){5}[0-9A-F]{2})',scan)
 #   No idea about why this regular expression doesn't work
     BSSID=re.findall('[0-9A-F]{2}:[0-9A-F]{2}:[0-9A-F]{2}:[0-9A-F]{2}:[0-9A-F]{2}:[0-9A-F]{2}',scan)
     ESSID=re.findall('(?<=").*(?=")',scan)
+    dBm=re.findall('[-]\d+ dBm',scan)
 
-    
     print "====================="
     print "  ",len(BSSID),"APs detected..."
     print "====================="
     i=0
     while(i<len(BSSID)):
-        print i,"\t",BSSID[i],"\t",ESSID[i]
+        print i+1," ",dBm[i],"\t",BSSID[i],"\t",ESSID[i]
         i=i+1
     
     print "\n"

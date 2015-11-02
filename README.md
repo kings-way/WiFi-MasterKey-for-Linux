@@ -1,4 +1,4 @@
-# WiFi-MasterKey-in-Linux
+# WiFi-MasterKey-for-Linux
 ## WiFi 万能钥匙 for Linux
 ### Notice:
 * 本代码fork自 https://github.com/5alt/lianwifi

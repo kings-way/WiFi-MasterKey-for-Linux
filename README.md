@@ -21,7 +21,7 @@
 ## Preparation:
 
 ### for PC
-* 
+
 		$ sudo apt-get install wireless-tools python-pip
 		$ sudo pip install  requests pycrypto
 		

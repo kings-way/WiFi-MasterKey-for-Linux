@@ -6,6 +6,8 @@
 * 于是我就简单修改了一下，使其适用于PC Linux以及Nokia N9手机
 
 ## Usage:
+* 
+
 		$ chmod +x test.py
 		$ ./test.py -h
 		=====================

@@ -2,7 +2,7 @@
 ## WiFi 万能钥匙 for Linux
 ### Notice:
 * 本代码fork自 https://github.com/5alt/lianwifi
-* 源代码模拟了OS X下Wifi万能钥匙的运行过程，也仅适用与OS X操作系统
+* 源代码模拟了OS X下Wifi万能钥匙的运行过程，也仅适用于OS X操作系统
 * 于是我就简单修改了一下，使其适用于PC Linux以及Nokia N9手机
 
 ## Usage:

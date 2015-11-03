@@ -6,16 +6,23 @@
 * 于是我就简单修改了一下，使其适用于PC Linux以及Nokia N9手机
 
 ## Usage:
+		$ chmod +x test.py
+		$ ./test.py -h
+		=====================
+		Usage:
+		   ./test.py    				run automaticly  
+		   ./test.py  [ESSID] [BSSID]	query the specific ssid
+		   ./test.py  -h				show this help notice
+		=====================
 
-### for PC 
-* 运行环境准备
 
-		sudo apt-get install wireless-tools python-pip
-		sudo pip install  requests pycrypto
-直接运行即可自动搜索周围AP信号，随后自动调用wifi万能钥匙查询接口，返回有密码的条目
+## Preparation:
 
-		chmod +x test.py
-		./test.py
+### for PC
+* 
+		$ sudo apt-get install wireless-tools python-pip
+		$ sudo pip install  requests pycrypto
+		
 
 ### for Nokia N9
 * N9自带python2.6, 我们还需要安装crypto和requests库，还要安装wireless-tools系统工具
@@ -26,10 +33,7 @@
 		# apt-get install wireless-tools python-crypto 
 		# unzip requests-master.zip && cd requests-master
 		# python setup.py install
-增加可执行权限，直接运行i即可
 
-		chmod +x test.py
-		./test.py	 
 
 
 ### Ps：更多细节功能尽请期待！

@@ -16,6 +16,7 @@ import commands
 import time
 import sys
 import os
+import getopt
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -238,7 +239,15 @@ class wifi:
             else:
                     print wifi['msg']
 
-if __name__ == '__main__':
+
+            
+            
+            
+
+    
+
+
+def autoscan():
 
 #   First, We have to judge whether it is a PC or Nokia N9 phone, a smartphone which runs Meego OS.
 #   When on Meego, iwlist sometimes returns 2 ESSID of an AP, Oops
@@ -269,3 +278,34 @@ if __name__ == '__main__':
     print " Passwords cracked..."
     print "====================="
     wifi().query(ESSID,BSSID)
+
+
+def help_usage():
+    print "====================="
+    print "Usage:"
+    print "   ./test.py    \t\trun automaticly  "
+    print "   ./test.py  [ESSID] [BSSID]\tquery the specific ssid"
+    print "   ./test.py  -h\t\tshow this help info"
+    print "====================="
+            
+if __name__ == '__main__':
+    
+    len_argv=len(sys.argv)
+    if len_argv == 1:
+        autoscan()
+
+    elif len_argv == 2:
+        options,args=getopt.getopt(sys.argv[1:],"h")
+        for opt,value in options:
+            if opt == "-h":
+                help_usage()
+    
+    elif len_argv == 3:
+        ESSID=[]
+        BSSID=[]
+        ESSID.append(sys.argv[1])
+        BSSID.append(sys.argv[2])
+        wifi().query(ESSID,BSSID)
+
+    else:
+        help_usage()

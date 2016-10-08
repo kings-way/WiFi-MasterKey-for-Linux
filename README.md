@@ -35,5 +35,3 @@
 		# python setup.py install
 
 
-
-### Ps：更多细节功能尽请期待！

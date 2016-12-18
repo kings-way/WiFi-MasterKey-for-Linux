@@ -1,6 +1,8 @@
 # WiFi-MasterKey-for-Linux
 ## WiFi 万能钥匙 for Linux
-### Notice:
+### PS: 项目中使用到的wifi万能钥匙接口已经失效，因此这里的代码已经不能正常运行，留在这里仅为后来者参考
+-
+### Notice: 
 * 本代码fork自 https://github.com/5alt/lianwifi
 * 源代码模拟了OS X下Wifi万能钥匙的运行过程，也仅适用于OS X操作系统
 * 于是我就简单修改了一下，使其适用于PC Linux以及Nokia N9手机

@@ -3,7 +3,7 @@
 # Author:
 #   <md5_salt [AT] qq.com> 
 #        https://github.com/5alt/lianwifi
-#   <root@kings-way.info> 
+#   <io[AT]stdio.io> 
 #       https://github.com/kings-way/WiFi-MasterKey-in-Linux
 
 
